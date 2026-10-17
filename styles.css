@@ -336,8 +336,8 @@ p {
 .hero {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - var(--nav-h));
-  min-height: calc(100svh - var(--nav-h));
+  min-height: min(calc(82vh - var(--nav-h)), 720px);
+  min-height: min(calc(82svh - var(--nav-h)), 720px);
   padding: 12px;
 }
 
@@ -346,9 +346,9 @@ p {
   position: relative;
   flex: 1;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  padding: 4.5rem 14px 0;
+  padding: 3.5rem 14px;
   overflow: hidden;
   background-color: var(--moss-ink);
   isolation: isolate;
@@ -361,9 +361,9 @@ p {
   z-index: -1;
   background-color: var(--cream);
   opacity: 0.32;
-  -webkit-mask: var(--toile) 0 0 / 220px 220px repeat, radial-gradient(ellipse 48% 52% at 50% 60%, transparent 50%, #000 90%);
+  -webkit-mask: var(--toile) 0 0 / 220px 220px repeat, radial-gradient(ellipse 46% 50% at 50% 50%, transparent 45%, #000 90%);
   -webkit-mask-composite: source-in;
-  mask: var(--toile) 0 0 / 220px 220px repeat, radial-gradient(ellipse 48% 52% at 50% 60%, transparent 50%, #000 90%);
+  mask: var(--toile) 0 0 / 220px 220px repeat, radial-gradient(ellipse 46% 50% at 50% 50%, transparent 45%, #000 90%);
   mask-composite: intersect;
 }
 
@@ -391,27 +391,13 @@ p {
 .hero__moon--l { left: 12%; }
 .hero__moon--r { right: 12%; }
 
-/* Ventana en arco dibujada solo con filetes: el texto queda sobre el propio grabado */
+/* Bloque de texto sobre el propio grabado */
 .hero__arch {
   position: relative;
   width: 100%;
   max-width: 900px;
-  padding: 4.5rem 1.25rem 3.25rem;
   text-align: center;
   color: var(--cream);
-  border: 1px solid rgba(240, 237, 230, 0.4);
-  border-bottom: 0;
-  border-radius: 999px 999px 0 0;
-}
-
-.hero__arch::before {
-  content: "";
-  position: absolute;
-  inset: 9px 9px 0;
-  border: 1px solid rgba(240, 237, 230, 0.18);
-  border-bottom: 0;
-  border-radius: 999px 999px 0 0;
-  pointer-events: none;
 }
 
 .hero__star {
@@ -526,37 +512,6 @@ p {
   font-size: 1.6rem;
   color: var(--moss-light);
   margin: 0;
-}
-
-/* Sello giratorio */
-.seal {
-  width: 132px;
-  height: 132px;
-  margin-bottom: 1.5rem;
-  color: var(--moss);
-  fill: var(--moss);
-}
-
-.seal text {
-  font-family: var(--font-sans);
-  font-size: 13.5px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
-
-.seal__ring {
-  transform-origin: 100px 100px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .seal__ring {
-    animation: spin 30s linear infinite;
-  }
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
 }
 
 /* --- 4. Marcapáginas del encuentro -------------------------------------- */
@@ -910,6 +865,31 @@ p {
   cursor: progress;
 }
 
+/* Casilla de consentimiento */
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--cream-soft);
+  cursor: pointer;
+}
+
+.consent__box {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 0.1rem 0 0;
+  accent-color: var(--moss-light);
+  cursor: pointer;
+}
+
+.consent a {
+  color: var(--cream);
+}
+
 /* --- 12. Preguntas frecuentes ------------------------------------------- */
 .faq {
   border-top: 1px solid var(--ink-line);
@@ -1072,6 +1052,54 @@ p {
   color: var(--ink);
 }
 
+/* --- Página de política de privacidad --------------------------------- */
+.legal__inner {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.legal .title {
+  margin-bottom: 0.75rem;
+}
+
+.legal__updated {
+  margin-bottom: 2.5rem;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+.legal h2 {
+  margin: 3rem 0 1rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+}
+
+.legal p,
+.legal .ledger {
+  color: var(--ink-soft);
+}
+
+.legal .ledger {
+  margin-bottom: 1.15rem;
+}
+
+.legal strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.legal a:not(.btn) {
+  color: var(--moss-ink);
+  text-underline-offset: 3px;
+}
+
+.legal__back {
+  margin-top: 3rem;
+}
+
+.nav__back {
+  font-size: 0.85rem;
+}
+
 /* --- Entrada suave al hacer scroll (la clase .js la pone main.js) ------- */
 .js .reveal {
   opacity: 0;
@@ -1129,8 +1157,8 @@ p {
     display: block;
   }
 
-  .hero__arch {
-    padding: 5.5rem 4rem 4rem;
+  .hero__frame {
+    padding: 4rem 2rem;
   }
 
   .hero__title {
@@ -1176,12 +1204,6 @@ p {
     align-self: start;
   }
 
-  .seal {
-    position: absolute;
-    top: -150px;
-    right: 0;
-    margin: 0;
-  }
 }
 
 @media (min-width: 1024px) {
