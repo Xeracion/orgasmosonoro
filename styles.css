@@ -294,9 +294,62 @@ p {
   fill: var(--moss);
 }
 
-/* En móvil el nav es solo el logo: el hero ya tiene su CTA */
-.nav__cta {
+/* Menú: en móvil se despliega bajo la barra con el botón "Menú" */
+.nav__toggle {
+  padding: 0.5rem 0.9rem;
+  background: none;
+  border: 1px solid var(--ink-line);
+  border-radius: 2px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav__toggle[aria-expanded="true"] {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.nav__menu {
   display: none;
+  position: absolute;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  padding: 0.5rem var(--gutter) 1.5rem;
+  background-color: var(--paper);
+  border-bottom: 1px solid var(--ink-line);
+}
+
+.nav__menu.is-open {
+  display: block;
+}
+
+.nav__links {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+.nav__links a {
+  display: block;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--ink-line);
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+/* Sección visible en pantalla */
+.nav__links a.is-active {
+  color: var(--moss);
+}
+
+.nav__cta {
+  width: 100%;
 }
 
 /* --- 2. Hero ------------------------------------------------------------ */
@@ -305,7 +358,7 @@ p {
   flex-direction: column;
   min-height: calc(100vh - var(--nav-h));
   min-height: calc(100svh - var(--nav-h));
-  padding: 12px 12px 0;
+  padding: 12px;
 }
 
 /* Lámina verde con el grabado de helechos */
@@ -328,8 +381,10 @@ p {
   z-index: -1;
   background-color: var(--cream);
   opacity: 0.32;
-  -webkit-mask: var(--toile) 0 0 / 220px 220px repeat;
-  mask: var(--toile) 0 0 / 220px 220px repeat;
+  -webkit-mask: var(--toile) 0 0 / 220px 220px repeat, radial-gradient(ellipse 48% 52% at 50% 60%, transparent 50%, #000 90%);
+  -webkit-mask-composite: source-in;
+  mask: var(--toile) 0 0 / 220px 220px repeat, radial-gradient(ellipse 48% 52% at 50% 60%, transparent 50%, #000 90%);
+  mask-composite: intersect;
 }
 
 /* Filete interior, como el marco de un grabado */
@@ -369,78 +424,58 @@ p {
 .hero__moon--l { left: 12%; }
 .hero__moon--r { right: 12%; }
 
-/* Arco crema que contiene el mensaje */
+/* Ventana en arco dibujada solo con filetes: el texto queda sobre el propio grabado */
 .hero__arch {
   position: relative;
   width: 100%;
-  max-width: 680px;
-  padding: 4.5rem 1.5rem 3rem;
+  max-width: 900px;
+  padding: 4.5rem 1.25rem 3.25rem;
   text-align: center;
-  background-color: var(--paper);
+  color: var(--cream);
+  border: 1px solid rgba(240, 237, 230, 0.4);
+  border-bottom: 0;
   border-radius: 999px 999px 0 0;
-  box-shadow:
-    0 0 0 8px var(--moss-ink),
-    0 0 0 9px rgba(240, 237, 230, 0.6);
+}
+
+.hero__arch::before {
+  content: "";
+  position: absolute;
+  inset: 9px 9px 0;
+  border: 1px solid rgba(240, 237, 230, 0.18);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  pointer-events: none;
 }
 
 .hero__star {
-  width: 22px;
-  height: 22px;
-  margin: 0 auto 1.25rem;
-  fill: var(--moss);
+  width: 20px;
+  height: 20px;
+  margin: 0 auto 1.5rem;
+  fill: var(--moss-light);
 }
 
 .hero__title {
-  font-size: 2.35rem;
-  line-height: 1.02;
-  margin-bottom: 1.25rem;
+  font-size: 2.6rem;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  text-wrap: balance;
+}
+
+.hero__title em {
+  color: var(--moss-light);
 }
 
 .hero__lead {
-  max-width: 30em;
-  margin: 0 auto 1.75rem;
-  font-size: 0.98rem;
-  color: var(--ink-soft);
+  max-width: 31em;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  color: rgba(240, 237, 230, 0.78);
 }
 
 .hero__note {
-  margin: 0.9rem 0 0;
+  margin: 1rem 0 0;
   font-size: 0.8rem;
-  color: var(--ink-soft);
-}
-
-/* Cinta con desplazamiento continuo */
-.marquee {
-  overflow: hidden;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid var(--ink-line);
-}
-
-.marquee__track {
-  display: flex;
-  align-items: center;
-  gap: 1.75rem;
-  width: max-content;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.5rem;
-  color: var(--moss-ink);
-}
-
-.marquee__track svg {
-  width: 12px;
-  height: 12px;
-  fill: var(--moss);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .marquee__track {
-    animation: marquee 40s linear infinite;
-  }
-}
-
-@keyframes marquee {
-  to { transform: translateX(calc(-50% - 0.875rem)); }
+  color: rgba(240, 237, 230, 0.6);
 }
 
 /* --- Secciones ---------------------------------------------------------- */
@@ -1018,6 +1053,31 @@ p {
   border-bottom: 1px solid var(--ink-line);
 }
 
+/* Crédito de la entidad promotora */
+.site-footer__org {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+.site-footer__org img {
+  display: block;
+  width: 150px;
+  height: auto;
+}
+
+.site-footer__org:hover {
+  opacity: 0.75;
+}
+
 .site-footer p {
   margin: 0;
 }
@@ -1071,12 +1131,8 @@ p {
     --gutter: 40px;
   }
 
-  .nav__cta {
-    display: inline-flex;
-  }
-
   .hero {
-    padding: 16px 16px 0;
+    padding: 16px;
   }
 
   .hero__moon {
@@ -1084,7 +1140,7 @@ p {
   }
 
   .hero__arch {
-    padding: 5.5rem 3.5rem 3.5rem;
+    padding: 5.5rem 4rem 4rem;
   }
 
   .hero__title {
@@ -1139,6 +1195,66 @@ p {
 }
 
 @media (min-width: 1024px) {
+  .hero__title {
+    font-size: 4.25rem;
+  }
+
+  /* Menú completo en la barra */
+  .nav__toggle {
+    display: none;
+  }
+
+  .nav__menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: static;
+    padding: 0;
+    background: none;
+    border: 0;
+  }
+
+  .nav__links {
+    display: flex;
+    gap: 1.75rem;
+    margin: 0;
+  }
+
+  .nav__links a {
+    position: relative;
+    padding: 0.25rem 0;
+    border: 0;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* Subrayado fino al pasar o en la sección activa */
+  .nav__links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .nav__links a:hover::after,
+  .nav__links a.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .nav__cta {
+    width: auto;
+    padding: 0.65rem 1.2rem;
+  }
+
   /* Los marcapáginas dejan de desplazarse y se abren en abanico */
   .bookmarks {
     justify-content: center;

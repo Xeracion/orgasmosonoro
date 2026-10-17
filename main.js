@@ -3,7 +3,8 @@
    El scroll suave lo resuelve CSS (scroll-behavior). Aquí solo hay:
    1. Aparición suave de secciones al hacer scroll
    2. Acordeón de preguntas frecuentes
-   3. Formulario de lista de espera (placeholder hasta conectar el ESP)
+   3. Menú: despliegue en móvil y sección activa
+   4. Formulario de lista de espera (placeholder hasta conectar el ESP)
    ========================================================================== */
 (function () {
   'use strict';
@@ -49,7 +50,52 @@
     });
   });
 
-  /* --- 3. Formulario de lista de espera ----------------------------------
+  /* --- 3. Menú ---------------------------------------------------------- */
+  var toggle = document.querySelector('.nav__toggle');
+  var menu = document.getElementById('nav-menu');
+
+  function setMenu(open) {
+    toggle.setAttribute('aria-expanded', String(open));
+    menu.classList.toggle('is-open', open);
+  }
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', function () {
+      setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // Al elegir una sección o pulsar Escape, el menú se cierra
+    menu.addEventListener('click', function (event) {
+      if (event.target.closest('a')) setMenu(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setMenu(false);
+    });
+  }
+
+  // Marca en el menú la sección que se está leyendo
+  var navLinks = document.querySelectorAll('.nav__links a');
+
+  if ('IntersectionObserver' in window && navLinks.length) {
+    var linkFor = {};
+    navLinks.forEach(function (link) {
+      linkFor[link.getAttribute('href').slice(1)] = link;
+    });
+
+    var sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = linkFor[entry.target.id];
+        if (link) link.classList.toggle('is-active', entry.isIntersecting);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+
+    Object.keys(linkFor).forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section) sectionObserver.observe(section);
+    });
+  }
+
+  /* --- 4. Formulario de lista de espera ----------------------------------
      El navegador valida el email (type="email" + required) antes de llegar aquí.
      Para conectar Brevo o Mailchimp: cambia el action del <form> en index.html
      por la URL del formulario de tu ESP y sustituye el alert por un fetch()

@@ -131,13 +131,24 @@
         <svg class="nav__mark" aria-hidden="true"><use href="#estrella"/></svg>
         Orgamo Sonoro
       </a>
-      <a class="btn btn--ghost nav__cta" href="#lista">Apúntate</a>
+      <!-- Botón de menú solo en móvil -->
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">Menú</button>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__links">
+          <li><a href="#encuentro">El encuentro</a></li>
+          <li><a href="#fragas">El lugar</a></li>
+          <li><a href="#para-ti">Para quién</a></li>
+          <li><a href="#precio">Precio</a></li>
+          <li><a href="#preguntas">Preguntas</a></li>
+        </ul>
+        <a class="btn btn--primary nav__cta" href="#lista">Apúntate</a>
+      </div>
     </nav>
   </header>
 
   <main id="contenido">
 
-    <!-- 2. Hero: lámina enmarcada con toile de helechos y un arco con el mensaje -->
+    <!-- 2. Hero: lámina enmarcada con toile de helechos; el grabado se desvanece tras el texto -->
     <section class="hero" id="inicio" aria-labelledby="hero-titulo">
       <div class="hero__frame">
         <span class="hero__corner hero__corner--tl">Fragas do Eume</span>
@@ -147,30 +158,10 @@
 
         <div class="hero__arch">
           <svg class="hero__star" aria-hidden="true"><use href="#estrella"/></svg>
-          <h1 id="hero-titulo" class="hero__title">Hay un sitio entre A Coruña y Ferrol donde la cabeza <em>se apaga sola.</em></h1>
+          <h1 id="hero-titulo" class="hero__title">Hay un sitio entre A&nbsp;Coruña y Ferrol donde la cabeza <em>se apaga sola.</em></h1>
           <p class="hero__lead">Orgamo Sonoro es un movimiento que organiza encuentros en grupos pequeños para explorar la música, la respiración y el cacao junto a las Fragas do Eume. No hace falta saber bailar. No hace falta experiencia. Solo hace falta estar harto de no parar.</p>
-          <a class="btn btn--primary" href="#lista">Avisadme del próximo encuentro</a>
+          <a class="btn btn--light" href="#lista">Avisadme del próximo encuentro</a>
           <p class="hero__note">Las plazas se reparten primero entre la gente de la lista.</p>
-        </div>
-      </div>
-
-      <!-- Cinta con los ingredientes del encuentro -->
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee__track">
-          <span>Música</span><svg><use href="#estrella"/></svg>
-          <span>Respiración</span><svg><use href="#estrella"/></svg>
-          <span>Cacao</span><svg><use href="#estrella"/></svg>
-          <span>Grupos pequeños</span><svg><use href="#estrella"/></svg>
-          <span>Sin alcohol</span><svg><use href="#estrella"/></svg>
-          <span>Sin móvil</span><svg><use href="#estrella"/></svg>
-          <span>Fragas do Eume</span><svg><use href="#estrella"/></svg>
-          <span>Música</span><svg><use href="#estrella"/></svg>
-          <span>Respiración</span><svg><use href="#estrella"/></svg>
-          <span>Cacao</span><svg><use href="#estrella"/></svg>
-          <span>Grupos pequeños</span><svg><use href="#estrella"/></svg>
-          <span>Sin alcohol</span><svg><use href="#estrella"/></svg>
-          <span>Sin móvil</span><svg><use href="#estrella"/></svg>
-          <span>Fragas do Eume</span><svg><use href="#estrella"/></svg>
         </div>
       </div>
     </section>
@@ -206,7 +197,7 @@
       </section>
 
       <!-- 4. Qué pasa en un encuentro (sección nocturna con marcapáginas) -->
-      <section class="section section--night reveal" aria-labelledby="encuentro-titulo">
+      <section class="section section--night reveal" id="encuentro" aria-labelledby="encuentro-titulo">
         <div class="wrap">
           <p class="eyebrow">Nº 02 · El encuentro</p>
           <div class="head-row">
@@ -274,7 +265,7 @@
       </section>
 
       <!-- 6. Por qué las Fragas do Eume (nocturna, con banda de toile y cifras) -->
-      <section class="section section--night section--toile reveal" aria-labelledby="fragas-titulo">
+      <section class="section section--night section--toile reveal" id="fragas" aria-labelledby="fragas-titulo">
         <div class="wrap">
           <p class="eyebrow">Nº 04 · El lugar</p>
           <h2 id="fragas-titulo" class="title">Por qué las <em>Fragas do Eume</em></h2>
@@ -311,7 +302,7 @@
     </article>
 
     <!-- 8. Para quién es: libro de cuentas a dos columnas -->
-    <section class="section reveal" aria-labelledby="para-ti-titulo">
+    <section class="section reveal" id="para-ti" aria-labelledby="para-ti-titulo">
       <div class="wrap">
         <p class="eyebrow">Nº 06 · Para quién</p>
         <h2 id="para-ti-titulo" class="title">¿Es <em>para ti?</em></h2>
@@ -349,7 +340,7 @@
     </section>
 
     <!-- 10. Precio -->
-    <section class="section reveal" aria-labelledby="precio-titulo">
+    <section class="section reveal" id="precio" aria-labelledby="precio-titulo">
       <div class="wrap price">
         <div>
           <p class="eyebrow">Nº 07 · Contribución</p>
@@ -394,7 +385,7 @@
     </section>
 
     <!-- 12. Preguntas frecuentes: acordeón tipo libro de cuentas (coincide con el schema FAQPage) -->
-    <section class="section reveal" aria-labelledby="faq-titulo">
+    <section class="section reveal" id="preguntas" aria-labelledby="faq-titulo">
       <div class="wrap">
         <p class="eyebrow">Nº 08 · Dudas</p>
         <h2 id="faq-titulo" class="title">Preguntas <em>frecuentes</em></h2>
@@ -448,6 +439,10 @@
   <!-- 14. Pie con banda de toile -->
   <footer class="site-footer">
     <div class="site-footer__toile" aria-hidden="true"></div>
+    <a class="site-footer__org" href="https://xeracion.org" rel="noopener">
+      <span>Una iniciativa de</span>
+      <img src="logo-xeracion.png" width="180" height="38" alt="Xeración">
+    </a>
     <p>© 2026 Orgamo Sonoro · <a href="mailto:contacto@orgamosonoro.com">contacto@orgamosonoro.com</a> · <a href="https://www.instagram.com/orgamosonoro/" rel="noopener">Instagram @orgamosonoro</a></p>
   </footer>
 

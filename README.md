@@ -12,6 +12,7 @@ HTML, CSS y JS estáticos, sin dependencias ni paso de compilación. Se abre dir
 | `styles.css` | Estilos mobile-first con custom properties |
 | `main.js` | Aparición de secciones, acordeón de preguntas y formulario |
 | `og-image.jpg` | Imagen para compartir en redes (1200 × 630) |
+| `logo-xeracion.png` | Logo de Xeración para el pie |
 
 ## Antes de publicar
 
