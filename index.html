@@ -371,8 +371,13 @@
             <input class="waitlist__trap" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button class="btn btn--light" type="submit">Quiero estar en la lista</button>
           </form>
+          <!-- Consentimiento (pertenece al formulario mediante el atributo form) -->
+          <label class="consent">
+            <input class="consent__box" type="checkbox" name="consentimiento" value="si" form="waitlist-form" required>
+            <span>He leído y acepto la <a href="privacidad.html">política de privacidad</a>. Tengo al menos 14 años.</span>
+          </label>
           <p class="waitlist__status" id="waitlist-status" role="status" aria-live="polite"></p>
-          <p class="small">Sin spam. Puedes salir cuando quieras. Solo usamos tu correo para avisarte de los encuentros.</p>
+          <p class="small">Sin spam. Puedes salir cuando quieras.</p>
         </div>
       </div>
     </section>
@@ -435,7 +440,7 @@
       <span>Una iniciativa de</span>
       <img src="logo-xeracion.png" width="180" height="38" alt="Xeración">
     </a>
-    <p>© 2026 Orgamo Sonoro</p>
+    <p>© 2026 Orgamo Sonoro · <a href="privacidad.html">Política de privacidad</a></p>
   </footer>
 
   <script src="main.js"></script>

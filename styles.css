@@ -910,6 +910,31 @@ p {
   cursor: progress;
 }
 
+/* Casilla de consentimiento */
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--cream-soft);
+  cursor: pointer;
+}
+
+.consent__box {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 0.1rem 0 0;
+  accent-color: var(--moss-light);
+  cursor: pointer;
+}
+
+.consent a {
+  color: var(--cream);
+}
+
 /* --- 12. Preguntas frecuentes ------------------------------------------- */
 .faq {
   border-top: 1px solid var(--ink-line);
@@ -1070,6 +1095,54 @@ p {
 
 .site-footer a:hover {
   color: var(--ink);
+}
+
+/* --- Página de política de privacidad --------------------------------- */
+.legal__inner {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.legal .title {
+  margin-bottom: 0.75rem;
+}
+
+.legal__updated {
+  margin-bottom: 2.5rem;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+.legal h2 {
+  margin: 3rem 0 1rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+}
+
+.legal p,
+.legal .ledger {
+  color: var(--ink-soft);
+}
+
+.legal .ledger {
+  margin-bottom: 1.15rem;
+}
+
+.legal strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.legal a:not(.btn) {
+  color: var(--moss-ink);
+  text-underline-offset: 3px;
+}
+
+.legal__back {
+  margin-top: 3rem;
+}
+
+.nav__back {
+  font-size: 0.85rem;
 }
 
 /* --- Entrada suave al hacer scroll (la clase .js la pone main.js) ------- */

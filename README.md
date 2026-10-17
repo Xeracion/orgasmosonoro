@@ -11,6 +11,7 @@ HTML, CSS y JS estáticos, sin dependencias ni paso de compilación. Se abre dir
 | `index.html` | Página completa, metadatos SEO, Open Graph, Twitter Card y schema (LocalBusiness y FAQPage) |
 | `styles.css` | Estilos mobile-first con custom properties |
 | `main.js` | Aparición de secciones, acordeón de preguntas, menú y envío del formulario |
+| `privacidad.html` | Política de privacidad (responsable: Asociación Xeración) |
 | `og-image.jpg` | Imagen para compartir en redes (1200 × 630) |
 | `logo-xeracion.png` | Logo de Xeración para el pie |
 | `google-apps-script/Code.gs` | Script que guarda los correos de la lista en Google Sheets |
@@ -31,4 +32,4 @@ Si cambias el script, publica una nueva versión desde Implementar > Gestionar i
 
 1. Sustituir el dominio provisional `orgamosonoro.com` (canonical, Open Graph y schema), y el correo e Instagram del schema.
 2. El formulario ya está conectado. Borra de la hoja la fila de prueba `prueba-web@orgamosonoro.com`.
-3. Añadir una política de privacidad, ya que el formulario recoge correos.
+3. Revisar la política de privacidad (`privacidad.html`) si cambia el uso de los datos o los proveedores.
