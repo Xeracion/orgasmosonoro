@@ -96,17 +96,52 @@
   }
 
   /* --- 4. Formulario de lista de espera ----------------------------------
-     El navegador valida el email (type="email" + required) antes de llegar aquí.
-     Para conectar Brevo o Mailchimp: cambia el action del <form> en index.html
-     por la URL del formulario de tu ESP y sustituye el alert por un fetch()
-     a ese endpoint, o elimina este listener para usar el envío nativo. */
+     Envía el correo a Google Sheets a través de una implementación de
+     Apps Script (google-apps-script/Code.gs). La URL va en el action del <form>.
+     El navegador valida el email (type="email" + required) antes de llegar aquí. */
   var form = document.getElementById('waitlist-form');
+  var statusBox = document.getElementById('waitlist-status');
 
-  if (form) {
+  function setStatus(message, isError) {
+    statusBox.textContent = message;
+    statusBox.classList.toggle('is-error', Boolean(isError));
+  }
+
+  if (form && statusBox) {
+    var button = form.querySelector('button[type="submit"]');
+
     form.addEventListener('submit', function (event) {
       event.preventDefault();
-      alert('¡Apuntado! Te avisamos pronto.');
-      form.reset();
+
+      var endpoint = form.getAttribute('action');
+      if (endpoint.indexOf('https://script.google.com/') !== 0 || endpoint.indexOf('PEGA_AQUI') !== -1) {
+        setStatus('El formulario aún no está conectado. Vuelve a intentarlo más tarde.', true);
+        return;
+      }
+
+      // Datos del formulario + de dónde viene la visita
+      var data = new URLSearchParams(new FormData(form));
+      var params = new URLSearchParams(window.location.search);
+      data.append('origen', params.get('utm_source') || document.referrer || 'directo');
+      data.append('campana', params.get('utm_campaign') || '');
+
+      button.disabled = true;
+      setStatus('Enviando...');
+
+      // Petición simple (sin cabeceras propias) para evitar el preflight CORS
+      fetch(endpoint, { method: 'POST', body: data })
+        .then(function (response) { return response.json(); })
+        .then(function (result) {
+          if (!result.ok) throw new Error(result.error || 'error');
+          setStatus('¡Apuntado! Te avisamos pronto.');
+          form.reset();
+        })
+        .catch(function () {
+          setStatus('No se ha podido enviar. Revisa tu conexión e inténtalo de nuevo.', true);
+        })
+        .then(function () {
+          button.disabled = false;
+        });
     });
   }
 })();

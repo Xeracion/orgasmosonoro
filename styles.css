@@ -138,26 +138,6 @@ a {
   opacity: 0.7;
 }
 
-/* Etiqueta de sección: versalitas espaciadas con una línea delante */
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  margin: 0 0 1.5rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--moss);
-}
-
-.eyebrow::before {
-  content: "";
-  width: 2rem;
-  height: 1px;
-  background: currentColor;
-}
-
 /* --- Tipografía --------------------------------------------------------- */
 h1,
 h2,
@@ -212,7 +192,7 @@ p {
   justify-content: center;
   padding: 0.95rem 1.6rem;
   border: 1px solid var(--ink);
-  border-radius: 2px;
+  border-radius: 999px;
   background: transparent;
   color: var(--ink);
   font-family: var(--font-sans);
@@ -299,7 +279,7 @@ p {
   padding: 0.5rem 0.9rem;
   background: none;
   border: 1px solid var(--ink-line);
-  border-radius: 2px;
+  border-radius: 999px;
   color: var(--ink);
   font: inherit;
   font-size: 0.85rem;
@@ -496,7 +476,6 @@ p {
   border-top-color: transparent !important;
 }
 
-.section--night .eyebrow,
 .section--night h2 em,
 .section--night .statement em,
 .section--night .punch {
@@ -770,19 +749,8 @@ p {
   padding-block: calc(var(--section-y) * 1.4);
 }
 
-.spoiler .eyebrow {
-  justify-content: center;
-}
-
-.spoiler .eyebrow::after {
-  content: "";
-  width: 2rem;
-  height: 1px;
-  background: currentColor;
-}
-
 .spoiler__title {
-  font-size: clamp(3.2rem, 12vw, 8rem);
+  font-size: clamp(2.8rem, 9vw, 6.5rem);
   line-height: 0.95;
   margin-bottom: 2rem;
 }
@@ -850,17 +818,13 @@ p {
   mask: var(--toile) 0 0 / 260px 260px repeat;
 }
 
-.cta-block .eyebrow {
-  color: var(--moss-light);
-}
-
 .cta-block__grid {
   display: grid;
   gap: 3rem;
 }
 
 .cta-block__title {
-  font-size: clamp(2.6rem, 6vw, 4.25rem);
+  font-size: clamp(2.6rem, 5vw, 3.75rem);
   margin-bottom: 2.5rem;
 }
 
@@ -914,7 +878,7 @@ p {
   padding: 1rem 1.1rem;
   background-color: rgba(240, 237, 230, 0.06);
   border: 1px solid rgba(240, 237, 230, 0.35);
-  border-radius: 2px;
+  border-radius: 999px;
   color: var(--cream);
   font: inherit;
 }
@@ -926,6 +890,37 @@ p {
 .waitlist__input:focus-visible {
   outline-color: var(--cream);
   border-color: var(--cream);
+}
+
+/* Campo trampa fuera de pantalla */
+.waitlist__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* Mensaje de estado tras enviar */
+.waitlist__status {
+  min-height: 1.5em;
+  margin: 0.9rem 0 0;
+  font-size: 0.95rem;
+  color: var(--cream);
+}
+
+.waitlist__status:empty {
+  margin: 0;
+  min-height: 0;
+}
+
+.waitlist__status.is-error {
+  color: #f2c6b4;
+}
+
+.waitlist .btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
 }
 
 /* --- 12. Preguntas frecuentes ------------------------------------------- */
@@ -1115,13 +1110,21 @@ p {
     gap: 0;
   }
 
-  .waitlist__input {
-    border-right: 0;
-    border-radius: 2px 0 0 2px;
+  /* Campo y botón dentro de una misma píldora */
+  .waitlist {
+    padding: 5px;
+    border: 1px solid rgba(240, 237, 230, 0.35);
+    border-radius: 999px;
+    background-color: rgba(240, 237, 230, 0.06);
   }
 
-  .waitlist .btn {
-    border-radius: 0 2px 2px 0;
+  .waitlist__input {
+    border: 0;
+    background: none;
+  }
+
+  .waitlist__input:focus-visible {
+    outline-offset: -2px;
   }
 }
 

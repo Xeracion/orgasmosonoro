@@ -172,7 +172,6 @@
       <!-- 3. Empecemos por lo que ya sabes -->
       <section class="section reveal" aria-labelledby="sabes-titulo">
         <div class="wrap">
-          <p class="eyebrow">Nº 01 · Lo que ya sabes</p>
           <h2 id="sabes-titulo" class="title">Empecemos por lo que <em>ya sabes</em></h2>
           <div class="split">
             <p class="statement">Hay una versión de ti que lleva meses <em>corriendo.</em></p>
@@ -199,7 +198,6 @@
       <!-- 4. Qué pasa en un encuentro (sección nocturna con marcapáginas) -->
       <section class="section section--night reveal" id="encuentro" aria-labelledby="encuentro-titulo">
         <div class="wrap">
-          <p class="eyebrow">Nº 02 · El encuentro</p>
           <div class="head-row">
             <h2 id="encuentro-titulo" class="title">Qué pasa en <em>un encuentro</em></h2>
             <p class="head-row__aside">Imagina esto.</p>
@@ -251,7 +249,6 @@
       <!-- 5. Qué es Orgamo Sonoro -->
       <section class="section reveal" aria-labelledby="que-es-titulo">
         <div class="wrap">
-          <p class="eyebrow">Nº 03 · El movimiento</p>
           <h2 id="que-es-titulo" class="title">Qué es <em>Orgamo Sonoro</em></h2>
           <div class="split">
             <p class="statement">No es un evento suelto. Es un sitio al que volver cada vez que la cabeza <em>te pida tregua.</em></p>
@@ -267,7 +264,6 @@
       <!-- 6. Por qué las Fragas do Eume (nocturna, con banda de toile y cifras) -->
       <section class="section section--night section--toile reveal" id="fragas" aria-labelledby="fragas-titulo">
         <div class="wrap">
-          <p class="eyebrow">Nº 04 · El lugar</p>
           <h2 id="fragas-titulo" class="title">Por qué las <em>Fragas do Eume</em></h2>
           <div class="split">
             <p class="statement">Porque hay lugares que te bajan las revoluciones <em>nada más llegar.</em></p>
@@ -288,7 +284,6 @@
       <!-- 7. Por qué grupos pequeños -->
       <section class="section reveal" aria-labelledby="grupos-titulo">
         <div class="wrap">
-          <p class="eyebrow">Nº 05 · El grupo</p>
           <h2 id="grupos-titulo" class="title">Por qué <em>grupos pequeños</em></h2>
           <div class="split">
             <p class="statement">Porque en una multitud desapareces, y aquí la idea es <em>justo la contraria.</em></p>
@@ -304,7 +299,6 @@
     <!-- 8. Para quién es: libro de cuentas a dos columnas -->
     <section class="section reveal" id="para-ti" aria-labelledby="para-ti-titulo">
       <div class="wrap">
-        <p class="eyebrow">Nº 06 · Para quién</p>
         <h2 id="para-ti-titulo" class="title">¿Es <em>para ti?</em></h2>
         <div class="fit">
           <div class="fit__col">
@@ -333,8 +327,7 @@
     <!-- 9. Spoiler -->
     <section class="section section--night spoiler reveal" aria-labelledby="spoiler-titulo">
       <div class="wrap">
-        <p class="eyebrow">Spoiler</p>
-        <h2 id="spoiler-titulo" class="spoiler__title"><span class="visually-hidden">Spoiler: </span>No hace falta <em>bailar.</em></h2>
+        <h2 id="spoiler-titulo" class="spoiler__title">Spoiler: no hace falta <em>bailar.</em></h2>
         <p class="spoiler__text">Lo decimos porque es la primera excusa que aparece. Si sabes caminar, sabes moverte. El resto es dejar que la música haga su trabajo. Hay quien baila todo el rato y hay quien se pasa media sesión tumbado mirando al techo. Los dos salen igual de bien.</p>
       </div>
     </section>
@@ -343,7 +336,6 @@
     <section class="section reveal" id="precio" aria-labelledby="precio-titulo">
       <div class="wrap price">
         <div>
-          <p class="eyebrow">Nº 07 · Contribución</p>
           <h2 id="precio-titulo" class="title">Lo que <em>cuesta</em></h2>
           <p class="price__amount">19 €</p>
           <p class="price__unit">de contribución por encuentro.</p>
@@ -363,7 +355,6 @@
     <section class="cta-block" id="lista" aria-labelledby="lista-titulo">
       <div class="wrap cta-block__grid reveal">
         <div>
-          <p class="eyebrow">La lista</p>
           <h2 id="lista-titulo" class="cta-block__title">Cómo funciona <em>la lista.</em></h2>
           <ol class="steps">
             <li>Te apuntas con tu correo. Diez segundos.</li>
@@ -373,13 +364,17 @@
         </div>
         <div class="cta-block__form">
           <p>Entre encuentro y encuentro te mandamos algo útil de vez en cuando: una respiración para el día a día, una lista de música para bajar revoluciones, alguna idea para parar en medio de la semana. Sin spam. Prometido.</p>
-          <!-- Formulario: action="#" hasta conectar Brevo o Mailchimp (ver main.js) -->
-          <form class="waitlist" id="waitlist-form" action="#" method="post">
+          <!-- Formulario: envía a Google Sheets mediante Apps Script.
+               Pega en action la URL de tu implementación (ver google-apps-script/Code.gs y README). -->
+          <form class="waitlist" id="waitlist-form" action="https://script.google.com/macros/s/PEGA_AQUI_EL_ID/exec" method="post">
             <label class="visually-hidden" for="email">Tu correo electrónico</label>
-            <input class="waitlist__input" type="email" id="email" name="email" placeholder="tu@correo.com" autocomplete="email" required>
+            <input class="waitlist__input" type="email" id="email" name="email" placeholder="tu@correo.com" autocomplete="email" maxlength="254" required>
+            <!-- Campo trampa contra bots: las personas no lo ven -->
+            <input class="waitlist__trap" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button class="btn btn--light" type="submit">Quiero estar en la lista</button>
           </form>
-          <p class="small">Sin spam. Puedes salir cuando quieras.</p>
+          <p class="waitlist__status" id="waitlist-status" role="status" aria-live="polite"></p>
+          <p class="small">Sin spam. Puedes salir cuando quieras. Solo usamos tu correo para avisarte de los encuentros.</p>
         </div>
       </div>
     </section>
@@ -387,7 +382,6 @@
     <!-- 12. Preguntas frecuentes: acordeón tipo libro de cuentas (coincide con el schema FAQPage) -->
     <section class="section reveal" id="preguntas" aria-labelledby="faq-titulo">
       <div class="wrap">
-        <p class="eyebrow">Nº 08 · Dudas</p>
         <h2 id="faq-titulo" class="title">Preguntas <em>frecuentes</em></h2>
         <div class="faq">
           <div class="faq__item">
@@ -443,7 +437,7 @@
       <span>Una iniciativa de</span>
       <img src="logo-xeracion.png" width="180" height="38" alt="Xeración">
     </a>
-    <p>© 2026 Orgamo Sonoro · <a href="mailto:contacto@orgamosonoro.com">contacto@orgamosonoro.com</a> · <a href="https://www.instagram.com/orgamosonoro/" rel="noopener">Instagram @orgamosonoro</a></p>
+    <p>© 2026 Orgamo Sonoro</p>
   </footer>
 
   <script src="main.js"></script>
