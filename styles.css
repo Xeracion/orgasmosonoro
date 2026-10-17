@@ -1,0 +1,1269 @@
+/* ==========================================================================
+   Orgamo Sonoro: hoja de estilos
+   Lenguaje editorial tipo "toile": papel de lino, tinta verde Fragas,
+   grabados de línea (helechos, lunas, estrellas) y franjas nocturnas.
+   Mobile-first.
+   ========================================================================== */
+
+/* --- Tokens de diseño --------------------------------------------------- */
+:root {
+  /* Papel y tinta */
+  --paper: #f2eee4;
+  --paper-deep: #e8e2d4;
+  --ink: #17301f;
+  --ink-soft: #4b6152;
+  --ink-line: rgba(23, 48, 31, 0.16);
+
+  /* Noche de bosque */
+  --night: #0a0f0a;
+  --night-soft: #111a12;
+  --cream: #f0ede6;
+  --cream-soft: rgba(240, 237, 230, 0.68);
+  --cream-line: rgba(240, 237, 230, 0.14);
+
+  /* Verde Fragas */
+  --moss: #4a7c59;
+  --moss-deep: #2e5a3c;
+  --moss-ink: #1f4a2e;
+  --moss-light: #8bb896;
+
+  /* Grabado toile (tile SVG usado como máscara para poder teñirlo de cualquier color) */
+  --toile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round'%3E%3Cpath d='M26.0 232.0 Q34.0 150.0 104.0 74.0 M29.9 207.0 Q41.3 209.5 51.2 200.6 M29.9 207.0 Q18.5 204.5 13.1 192.4 M32.8 195.1 Q43.4 198.0 53.1 190.3 M32.8 195.1 Q22.2 192.2 17.8 180.6 M36.4 183.3 Q46.1 186.6 55.5 179.8 M36.4 183.3 Q26.7 180.1 23.1 169.1 M40.6 171.6 Q49.5 175.1 58.5 169.3 M40.6 171.6 Q31.8 168.2 29.0 157.7 M45.5 159.9 Q53.5 163.5 62.2 158.6 M45.5 159.9 Q37.5 156.3 35.5 146.6 M51.1 148.3 Q58.3 152.0 66.4 147.9 M51.1 148.3 Q43.9 144.7 42.5 135.7 M57.3 136.8 Q63.7 140.4 71.3 137.0 M57.3 136.8 Q51.0 133.2 50.0 124.9 M64.2 125.3 Q69.8 128.9 76.8 126.1 M64.2 125.3 Q58.6 121.8 58.2 114.3 M71.8 113.9 Q76.6 117.3 82.9 115.1 M71.8 113.9 Q67.0 110.6 66.8 103.9 M80.0 102.6 Q84.1 105.7 89.7 104.0 M80.0 102.6 Q75.9 99.5 76.0 93.6 M88.9 91.3 Q92.3 94.1 97.2 92.8 M88.9 91.3 Q85.5 88.5 85.8 83.5'/%3E%3Cpath d='M228.0 226.0 Q214.0 172.0 158.0 140.0 M221.7 207.5 Q229.3 204.2 231.4 195.0 M221.7 207.5 Q214.0 210.8 205.9 205.9 M217.1 197.9 Q223.8 194.3 225.0 185.8 M217.1 197.9 Q210.4 201.5 202.6 197.7 M211.7 188.7 Q217.5 185.0 217.9 177.2 M211.7 188.7 Q205.9 192.5 198.6 189.7 M205.5 180.0 Q210.4 176.2 210.2 169.2 M205.5 180.0 Q200.6 183.8 193.8 181.8 M198.5 171.7 Q202.5 168.0 201.8 161.8 M198.5 171.7 Q194.4 175.4 188.3 174.1 M190.7 163.8 Q193.9 160.3 192.9 154.9 M190.7 163.8 Q187.4 167.3 182.0 166.6 M182.1 156.3 Q184.6 153.1 183.4 148.6 M182.1 156.3 Q179.5 159.5 174.8 159.3 M172.6 149.2 Q174.6 146.5 173.3 142.8 M172.6 149.2 Q170.7 152.0 166.8 152.1'/%3E%3Cpath d='M190 30 A20 20 0 1 0 190 70 A15 15 0 1 1 190 30 Z'/%3E%3Cpath d='M64 33 Q65.96 38.04 71 40 Q65.96 41.96 64 47 Q62.04 41.96 57 40 Q62.04 38.04 64 33 Z'/%3E%3Cpath d='M214 99 Q215.4 102.6 219 104 Q215.4 105.4 214 109 Q212.6 105.4 209 104 Q212.6 102.6 214 99 Z'/%3E%3Cpath d='M128 164 Q129.68 168.32 134 170 Q129.68 171.68 128 176 Q126.32 171.68 122 170 Q126.32 168.32 128 164 Z'/%3E%3Cpath d='M36 106.5 Q36.98 109.02 39.5 110 Q36.98 110.98 36 113.5 Q35.02 110.98 32.5 110 Q35.02 109.02 36 106.5 Z'/%3E%3Cpath d='M128 28 Q138 38 128 48 M136 22 Q152 38 136 54 M144 16 Q166 38 144 60'/%3E%3Cpath d='M150 214 C160 204 172 224 182 214 C192 204 204 224 214 214'/%3E%3Ccircle cx='96' cy='120' r='1.3' fill='black' stroke='none'/%3E%3Ccircle cx='170' cy='96' r='1.3' fill='black' stroke='none'/%3E%3Ccircle cx='58' cy='180' r='1.3' fill='black' stroke='none'/%3E%3Ccircle cx='200' cy='190' r='1.3' fill='black' stroke='none'/%3E%3Ccircle cx='112' cy='220' r='1.3' fill='black' stroke='none'/%3E%3Ccircle cx='16' cy='30' r='1.3' fill='black' stroke='none'/%3E%3Ccircle cx='232' cy='40' r='1.3' fill='black' stroke='none'/%3E%3Ccircle cx='84' cy='150' r='1.3' fill='black' stroke='none'/%3E%3C/svg%3E");
+
+  /* Tipografía */
+  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Medidas */
+  --gutter: 20px;
+  --wrap: 1120px;
+  --col: 640px;
+  --section-y: 4rem;
+  --nav-h: 64px;
+}
+
+/* --- Reset mínimo ------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: calc(var(--nav-h) + 1rem);
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Scroll suave global, salvo si la persona prefiere menos movimiento */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Textura de lino: ruido fractal + trama fina, por encima de todo y sin capturar clics */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .28 0 0 0 0 .22 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(0deg, rgba(60, 50, 30, 0.25) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(60, 50, 30, 0.18) 0 1px, transparent 1px 4px);
+}
+
+svg {
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 3px;
+}
+
+/* --- Utilidades --------------------------------------------------------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -100px;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+.wrap {
+  max-width: var(--wrap);
+  margin-inline: auto;
+}
+
+.small {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* --- Tipografía --------------------------------------------------------- */
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+/* La cursiva en verde es el acento tipográfico de toda la página */
+h1 em,
+h2 em,
+.statement em,
+.closing__text em {
+  font-style: italic;
+  color: var(--moss);
+}
+
+.title {
+  font-size: clamp(2.4rem, 7vw, 4.25rem);
+  margin-bottom: 2.5rem;
+  max-width: 14em;
+}
+
+p {
+  margin: 0 0 1.15rem;
+}
+
+/* Frase grande que abre cada bloque narrativo */
+.statement {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 4.2vw, 2.6rem);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.punch {
+  margin-top: 2rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.85rem;
+  line-height: 1.2;
+  color: var(--moss);
+}
+
+/* --- Botones ------------------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.6rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+/* Ghost: borde fino, sin relleno */
+.btn--ghost {
+  padding: 0.6rem 1.15rem;
+}
+
+.btn--ghost:hover {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+/* CTA principal: el único con fondo */
+.btn--primary {
+  background-color: var(--moss-ink);
+  border-color: var(--moss-ink);
+  color: var(--cream);
+}
+
+.btn--primary:hover {
+  background-color: var(--ink);
+  transform: translateY(-1px);
+}
+
+/* Variante clara para el bloque verde */
+.btn--light {
+  background-color: var(--cream);
+  border-color: var(--cream);
+  color: var(--moss-ink);
+}
+
+.btn--light:hover {
+  background-color: #fff;
+}
+
+/* --- 1. Navegación ------------------------------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(242, 238, 228, 0.8);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ink-line);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-h);
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  text-decoration: none;
+}
+
+.nav__mark {
+  width: 16px;
+  height: 16px;
+  fill: var(--moss);
+}
+
+/* Menú: en móvil se despliega bajo la barra con el botón "Menú" */
+.nav__toggle {
+  padding: 0.5rem 0.9rem;
+  background: none;
+  border: 1px solid var(--ink-line);
+  border-radius: 999px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav__toggle[aria-expanded="true"] {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.nav__menu {
+  display: none;
+  position: absolute;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  padding: 0.5rem var(--gutter) 1.5rem;
+  background-color: var(--paper);
+  border-bottom: 1px solid var(--ink-line);
+}
+
+.nav__menu.is-open {
+  display: block;
+}
+
+.nav__links {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+.nav__links a {
+  display: block;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--ink-line);
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+/* Sección visible en pantalla */
+.nav__links a.is-active {
+  color: var(--moss);
+}
+
+.nav__cta {
+  width: 100%;
+}
+
+/* --- 2. Hero ------------------------------------------------------------ */
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--nav-h));
+  min-height: calc(100svh - var(--nav-h));
+  padding: 12px;
+}
+
+/* Lámina verde con el grabado de helechos */
+.hero__frame {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 4.5rem 14px 0;
+  overflow: hidden;
+  background-color: var(--moss-ink);
+  isolation: isolate;
+}
+
+.hero__frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--cream);
+  opacity: 0.32;
+  -webkit-mask: var(--toile) 0 0 / 220px 220px repeat, radial-gradient(ellipse 48% 52% at 50% 60%, transparent 50%, #000 90%);
+  -webkit-mask-composite: source-in;
+  mask: var(--toile) 0 0 / 220px 220px repeat, radial-gradient(ellipse 48% 52% at 50% 60%, transparent 50%, #000 90%);
+  mask-composite: intersect;
+}
+
+/* Filete interior, como el marco de un grabado */
+.hero__frame::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  z-index: -1;
+  border: 1px solid rgba(240, 237, 230, 0.35);
+  pointer-events: none;
+}
+
+.hero__moon {
+  display: none;
+  position: absolute;
+  top: 18%;
+  width: 46px;
+  height: 46px;
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 1.2;
+}
+
+.hero__moon--l { left: 12%; }
+.hero__moon--r { right: 12%; }
+
+/* Ventana en arco dibujada solo con filetes: el texto queda sobre el propio grabado */
+.hero__arch {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  padding: 4.5rem 1.25rem 3.25rem;
+  text-align: center;
+  color: var(--cream);
+  border: 1px solid rgba(240, 237, 230, 0.4);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+}
+
+.hero__arch::before {
+  content: "";
+  position: absolute;
+  inset: 9px 9px 0;
+  border: 1px solid rgba(240, 237, 230, 0.18);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  pointer-events: none;
+}
+
+.hero__star {
+  width: 20px;
+  height: 20px;
+  margin: 0 auto 1.5rem;
+  fill: var(--moss-light);
+}
+
+.hero__title {
+  font-size: 2.6rem;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  text-wrap: balance;
+}
+
+.hero__title em {
+  color: var(--moss-light);
+}
+
+.hero__lead {
+  max-width: 31em;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  color: rgba(240, 237, 230, 0.78);
+}
+
+.hero__note {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  color: rgba(240, 237, 230, 0.6);
+}
+
+/* --- Secciones ---------------------------------------------------------- */
+.section {
+  padding: var(--section-y) var(--gutter);
+}
+
+/* Separador: línea de 1px en tinta atenuada entre secciones de papel */
+.section + .section,
+.relato + .section {
+  border-top: 1px solid var(--ink-line);
+}
+
+/* Franjas nocturnas */
+.section--night {
+  background-color: var(--night);
+  color: var(--cream);
+  border-top-color: transparent !important;
+}
+
+.section--night h2 em,
+.section--night .statement em,
+.section--night .punch {
+  color: var(--moss-light);
+}
+
+.section--night + .section {
+  border-top-color: transparent;
+}
+
+.section--night .split__body {
+  color: var(--cream-soft);
+}
+
+/* Banda de toile en la parte alta de la sección de las Fragas */
+.section--toile {
+  position: relative;
+  isolation: isolate;
+  padding-top: calc(var(--section-y) + 120px);
+}
+
+.section--toile::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 220px;
+  z-index: -1;
+  background-color: var(--moss-light);
+  opacity: 0.35;
+  -webkit-mask: var(--toile) 0 0 / 200px 200px repeat, linear-gradient(#000, transparent);
+  -webkit-mask-composite: source-in;
+  mask: var(--toile) 0 0 / 200px 200px repeat, linear-gradient(#000, transparent);
+  mask-composite: intersect;
+}
+
+/* Bloque a dos columnas: frase grande + texto */
+.split {
+  display: grid;
+  gap: 2rem;
+}
+
+.split__body {
+  position: relative;
+  color: var(--ink-soft);
+}
+
+/* Cabecera con aparte a la derecha */
+.head-row {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.head-row .title {
+  margin-bottom: 0;
+}
+
+.head-row__aside {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--moss-light);
+  margin: 0;
+}
+
+/* Sello giratorio */
+.seal {
+  width: 132px;
+  height: 132px;
+  margin-bottom: 1.5rem;
+  color: var(--moss);
+  fill: var(--moss);
+}
+
+.seal text {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.seal__ring {
+  transform-origin: 100px 100px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .seal__ring {
+    animation: spin 30s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- 4. Marcapáginas del encuentro -------------------------------------- */
+.bookmarks {
+  display: flex;
+  gap: 1rem;
+  margin: 0 calc(var(--gutter) * -1) 3.5rem;
+  padding: 1rem var(--gutter) 1.5rem;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.bookmarks::-webkit-scrollbar {
+  display: none;
+}
+
+.bookmark {
+  position: relative;
+  flex: 0 0 210px;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  padding: 1.25rem 1.25rem 1.5rem;
+  background-color: var(--paper);
+  color: var(--ink);
+  scroll-snap-align: start;
+  transition: transform 0.35s ease;
+}
+
+/* Agujero del marcapáginas */
+.bookmark::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  border-radius: 50%;
+  background-color: var(--night);
+}
+
+.bookmark--ink {
+  background-color: var(--moss-deep);
+  color: var(--cream);
+}
+
+.bookmark__num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  opacity: 0.75;
+}
+
+/* Viñeta de grabado dentro de cada marcapáginas */
+.bookmark__art {
+  flex: 1;
+  margin: 1rem 0 1.25rem;
+  min-height: 140px;
+  background-color: currentColor;
+  opacity: 0.55;
+  -webkit-mask: var(--toile) center / 180px 180px repeat;
+  mask: var(--toile) center / 180px 180px repeat;
+}
+
+.bookmark:nth-child(2) .bookmark__art { -webkit-mask-position: 60px 20px; mask-position: 60px 20px; }
+.bookmark:nth-child(3) .bookmark__art { -webkit-mask-position: -40px 80px; mask-position: -40px 80px; }
+.bookmark:nth-child(4) .bookmark__art { -webkit-mask-position: 100px -30px; mask-position: 100px -30px; }
+
+.bookmark__title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.bookmark__quote {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  opacity: 0.85;
+}
+
+/* --- 6. Cifras ---------------------------------------------------------- */
+.stats {
+  display: grid;
+  margin: 3.5rem 0 0;
+  border-top: 1px solid var(--cream-line);
+}
+
+.stats__item {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--cream-line);
+}
+
+.stats dd {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 9vw, 4.5rem);
+  line-height: 1;
+  color: var(--moss-light);
+}
+
+.stats dt {
+  margin-top: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream-soft);
+}
+
+/* --- 8. Para quién es: listas tipo libro de cuentas --------------------- */
+.fit {
+  display: grid;
+  gap: 3rem;
+}
+
+.fit__title {
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+}
+
+.fit__col--no {
+  color: var(--ink-soft);
+}
+
+.fit__col--no .fit__title {
+  font-style: italic;
+}
+
+.ledger {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ink-line);
+}
+
+.ledger li {
+  position: relative;
+  padding: 1rem 0 1rem 1.6rem;
+  border-bottom: 1px solid var(--ink-line);
+}
+
+/* Estrella pequeña como marcador */
+.ledger li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.55rem;
+  width: 9px;
+  height: 9px;
+  background-color: var(--moss);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+}
+
+.fit__col--no .ledger li::before {
+  background-color: var(--ink-soft);
+  opacity: 0.5;
+}
+
+.ledger--compact li {
+  padding-block: 0.7rem;
+}
+
+.ledger--compact li::before {
+  top: 1.25rem;
+}
+
+/* --- 9. Spoiler --------------------------------------------------------- */
+.spoiler {
+  text-align: center;
+  padding-block: calc(var(--section-y) * 1.4);
+}
+
+.spoiler__title {
+  font-size: clamp(2.8rem, 9vw, 6.5rem);
+  line-height: 0.95;
+  margin-bottom: 2rem;
+}
+
+.spoiler__text {
+  max-width: 36em;
+  margin: 0 auto;
+  color: var(--cream-soft);
+}
+
+/* --- 10. Precio --------------------------------------------------------- */
+.price {
+  display: grid;
+  gap: 2rem;
+  align-items: end;
+}
+
+.price .title {
+  margin-bottom: 1rem;
+}
+
+.price__amount {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(6rem, 24vw, 11rem);
+  line-height: 0.9;
+  color: var(--moss);
+}
+
+.price__unit {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--ink-soft);
+}
+
+.price__body {
+  color: var(--ink-soft);
+}
+
+.price__body .ledger {
+  margin-top: 1.5rem;
+  color: var(--ink);
+}
+
+/* --- 11. Lista de espera: bloque verde ---------------------------------- */
+.cta-block {
+  position: relative;
+  isolation: isolate;
+  padding: calc(var(--section-y) * 1.2) var(--gutter);
+  background-color: var(--moss-ink);
+  color: var(--cream);
+}
+
+/* Estrellas del grabado, muy tenues */
+.cta-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--cream);
+  opacity: 0.1;
+  -webkit-mask: var(--toile) 0 0 / 260px 260px repeat;
+  mask: var(--toile) 0 0 / 260px 260px repeat;
+}
+
+.cta-block__grid {
+  display: grid;
+  gap: 3rem;
+}
+
+.cta-block__title {
+  font-size: clamp(2.6rem, 5vw, 3.75rem);
+  margin-bottom: 2.5rem;
+}
+
+.cta-block__title em {
+  color: var(--moss-light);
+}
+
+.steps {
+  list-style: none;
+  counter-reset: paso;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--cream-line);
+}
+
+.steps li {
+  counter-increment: paso;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--cream-line);
+}
+
+/* Números grandes en serif */
+.steps li::before {
+  content: counter(paso);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--moss-light);
+}
+
+.cta-block__form {
+  align-self: end;
+  color: var(--cream-soft);
+}
+
+.waitlist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+}
+
+.waitlist__input {
+  flex: 1;
+  min-width: 0;
+  padding: 1rem 1.1rem;
+  background-color: rgba(240, 237, 230, 0.06);
+  border: 1px solid rgba(240, 237, 230, 0.35);
+  border-radius: 999px;
+  color: var(--cream);
+  font: inherit;
+}
+
+.waitlist__input::placeholder {
+  color: rgba(240, 237, 230, 0.5);
+}
+
+.waitlist__input:focus-visible {
+  outline-color: var(--cream);
+  border-color: var(--cream);
+}
+
+/* Campo trampa fuera de pantalla */
+.waitlist__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* Mensaje de estado tras enviar */
+.waitlist__status {
+  min-height: 1.5em;
+  margin: 0.9rem 0 0;
+  font-size: 0.95rem;
+  color: var(--cream);
+}
+
+.waitlist__status:empty {
+  margin: 0;
+  min-height: 0;
+}
+
+.waitlist__status.is-error {
+  color: #f2c6b4;
+}
+
+.waitlist .btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* --- 12. Preguntas frecuentes ------------------------------------------- */
+.faq {
+  border-top: 1px solid var(--ink-line);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--ink-line);
+  transition: background-color 0.25s ease;
+}
+
+.faq__item:has([aria-expanded="true"]) {
+  background-color: var(--paper-deep);
+}
+
+.faq__toggle {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1.35rem 0.5rem;
+  background: none;
+  border: 0;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq__num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--moss);
+}
+
+.faq__q {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  line-height: 1.2;
+}
+
+/* Botón circular con más/menos */
+.faq__mark {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--ink-line);
+  border-radius: 50%;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.faq__mark::before,
+.faq__mark::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 1px;
+  margin-left: -6px;
+  background: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.faq__mark::after {
+  transform: rotate(90deg);
+}
+
+.faq__toggle:hover .faq__mark {
+  border-color: var(--ink);
+}
+
+.faq__toggle[aria-expanded="true"] .faq__mark {
+  background-color: var(--moss-ink);
+  border-color: var(--moss-ink);
+  color: var(--cream);
+}
+
+.faq__toggle[aria-expanded="true"] .faq__mark::after {
+  transform: rotate(0deg);
+}
+
+.faq__answer p {
+  margin: 0;
+  padding: 0 0.5rem 1.5rem calc(2.6rem + 1.25rem);
+  max-width: 44em;
+  color: var(--ink-soft);
+}
+
+/* --- 13. Cierre --------------------------------------------------------- */
+.closing {
+  text-align: center;
+  padding-block: calc(var(--section-y) * 1.3);
+}
+
+.closing__text {
+  max-width: 18em;
+  margin: 0 auto 2.5rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6vw, 3.75rem);
+  line-height: 1.08;
+}
+
+/* --- 14. Pie ------------------------------------------------------------ */
+.site-footer {
+  padding: 0 var(--gutter) 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* Banda de grabado que se desvanece hacia arriba */
+.site-footer__toile {
+  height: 160px;
+  margin: 0 calc(var(--gutter) * -1) 2rem;
+  background-color: var(--moss);
+  opacity: 0.55;
+  -webkit-mask: var(--toile) 0 0 / 200px 200px repeat, linear-gradient(transparent, #000);
+  -webkit-mask-composite: source-in;
+  mask: var(--toile) 0 0 / 200px 200px repeat, linear-gradient(transparent, #000);
+  mask-composite: intersect;
+  border-bottom: 1px solid var(--ink-line);
+}
+
+/* Crédito de la entidad promotora */
+.site-footer__org {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+.site-footer__org img {
+  display: block;
+  width: 150px;
+  height: auto;
+}
+
+.site-footer__org:hover {
+  opacity: 0.75;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a {
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--ink);
+}
+
+/* --- Entrada suave al hacer scroll (la clase .js la pone main.js) ------- */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
+    transform: none;
+  }
+}
+
+/* --- Tablet y escritorio ------------------------------------------------ */
+@media (min-width: 560px) {
+  .waitlist {
+    flex-direction: row;
+    gap: 0;
+  }
+
+  /* Campo y botón dentro de una misma píldora */
+  .waitlist {
+    padding: 5px;
+    border: 1px solid rgba(240, 237, 230, 0.35);
+    border-radius: 999px;
+    background-color: rgba(240, 237, 230, 0.06);
+  }
+
+  .waitlist__input {
+    border: 0;
+    background: none;
+  }
+
+  .waitlist__input:focus-visible {
+    outline-offset: -2px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-y: 6rem;
+    --gutter: 40px;
+  }
+
+  .hero {
+    padding: 16px;
+  }
+
+  .hero__moon {
+    display: block;
+  }
+
+  .hero__arch {
+    padding: 5.5rem 4rem 4rem;
+  }
+
+  .hero__title {
+    font-size: 3.5rem;
+  }
+
+  .split,
+  .price,
+  .cta-block__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .head-row {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+
+  .fit {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 0;
+  }
+
+  .stats__item {
+    padding: 0 1.5rem;
+    border-bottom: 0;
+    border-left: 1px solid var(--cream-line);
+  }
+
+  .stats__item:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .split__sticky {
+    position: sticky;
+    top: calc(var(--nav-h) + 2rem);
+    align-self: start;
+  }
+
+  .seal {
+    position: absolute;
+    top: -150px;
+    right: 0;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero__title {
+    font-size: 4.25rem;
+  }
+
+  /* Menú completo en la barra */
+  .nav__toggle {
+    display: none;
+  }
+
+  .nav__menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: static;
+    padding: 0;
+    background: none;
+    border: 0;
+  }
+
+  .nav__links {
+    display: flex;
+    gap: 1.75rem;
+    margin: 0;
+  }
+
+  .nav__links a {
+    position: relative;
+    padding: 0.25rem 0;
+    border: 0;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* Subrayado fino al pasar o en la sección activa */
+  .nav__links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .nav__links a:hover::after,
+  .nav__links a.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .nav__cta {
+    width: auto;
+    padding: 0.65rem 1.2rem;
+  }
+
+  /* Los marcapáginas dejan de desplazarse y se abren en abanico */
+  .bookmarks {
+    justify-content: center;
+    gap: 1.5rem;
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow: visible;
+  }
+
+  .bookmark {
+    flex-basis: 230px;
+  }
+
+  .bookmark:nth-child(1) { transform: rotate(-3deg); }
+  .bookmark:nth-child(2) { transform: rotate(2deg) translateY(18px); }
+  .bookmark:nth-child(3) { transform: rotate(-1.5deg) translateY(-8px); }
+  .bookmark:nth-child(4) { transform: rotate(3deg) translateY(12px); }
+
+  .bookmark:hover {
+    transform: rotate(0) translateY(-10px);
+  }
+}
