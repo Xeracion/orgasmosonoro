@@ -377,19 +377,6 @@ p {
   pointer-events: none;
 }
 
-.hero__corner {
-  position: absolute;
-  top: 22px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(240, 237, 230, 0.8);
-}
-
-.hero__corner--tl { left: 24px; }
-.hero__corner--tr { right: 24px; }
-
 .hero__moon {
   display: none;
   position: absolute;
