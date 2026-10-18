@@ -36,8 +36,7 @@ Si cambias el script, publica una nueva versión desde Implementar > Gestionar i
 1. El dominio es `orgasmosonoro.com`. Revisar el correo e Instagram del schema (`contacto@orgasmosonoro.com`, `@orgasmosonoro`), que son provisionales.
    `vercel.json` redirige con 301 `orgamosonoro.com` a `orgasmosonoro.com` si ese dominio se añade al proyecto de Vercel.
 2. El formulario ya está conectado. Borra de la hoja la fila de prueba `prueba-web@orgamosonoro.com`.
-3. Añadir en `aviso-legal.html` el número de inscripción de Xeración en el Registro de Asociaciones.
-4. Revisar la política de privacidad (`privacidad.html`) si cambia el uso de los datos o los proveedores.
+3. Revisar la política de privacidad (`privacidad.html`) si cambia el uso de los datos o los proveedores.
 
 ## Cuando haya fecha cerrada
 
