@@ -1,6 +1,6 @@
 # Orgasmo Sonoro
 
-Landing de una sola página para los encuentros de música, respiración y cacao junto a las Fragas do Eume.
+Landing de una sola página para las sesiones de música, respiración y cacao junto a las Fragas do Eume.
 
 HTML, CSS y JS estáticos, sin dependencias ni paso de compilación. Se abre directamente con `index.html` o se despliega tal cual en Vercel, Netlify o GitHub Pages.
 
@@ -39,12 +39,12 @@ Si cambias el script, publica una nueva versión desde Implementar > Gestionar i
 ## Cuando haya fecha cerrada
 
 Sustituir en una sola pasada en `index.html`:
-* Hero: "Primer encuentro: un sábado antes de que acabe el año." pasa a "Primer encuentro: sábado [día] de [mes]."
-* Bloque del primer encuentro: "El primero será un sábado antes de que acabe el año." pasa a "El primero es el sábado [día] de [mes]."
-* Pregunta "¿Cuándo es el primer encuentro?": poner la fecha, también en el schema FAQPage.
+* Hero: "Primera sesión: un sábado antes de que acabe el año." pasa a "Primera sesión: sábado [día] de [mes]."
+* Bloque de la primera sesión: "La primera será un sábado antes de que acabe el año." pasa a "La primera es el sábado [día] de [mes]."
+* Pregunta "¿Cuándo es la primera sesión?": poner la fecha, también en el schema FAQPage.
 
-## Después del primer encuentro
+## Después de la primera sesión
 
-* Botones: "Quiero plaza en el primer encuentro" pasa a "Quiero plaza en el próximo encuentro".
-* Hero y preguntas: "primer encuentro" pasa a "próximo encuentro".
-* Sustituir el bloque del primer encuentro por tres citas reales de participantes.
+* Botones: "Quiero plaza en la primera sesión" pasa a "Quiero plaza en la próxima sesión".
+* Hero y preguntas: "primera sesión" pasa a "próxima sesión".
+* Sustituir el bloque de la primera sesión por tres citas reales de participantes.
