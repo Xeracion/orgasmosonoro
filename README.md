@@ -38,13 +38,4 @@ Si cambias el script, publica una nueva versión desde Implementar > Gestionar i
 
 ## Cuando haya fecha cerrada
 
-Sustituir en una sola pasada en `index.html`:
-* Hero: "Primera sesión: un sábado antes de que acabe el año." pasa a "Primera sesión: sábado [día] de [mes]."
-* Bloque de la primera sesión: "La primera será un sábado antes de que acabe el año." pasa a "La primera es el sábado [día] de [mes]."
-* Pregunta "¿Cuándo es la primera sesión?": poner la fecha, también en el schema FAQPage.
-
-## Después de la primera sesión
-
-* Botones: "Quiero plaza en la primera sesión" pasa a "Quiero plaza en la próxima sesión".
-* Hero y preguntas: "primera sesión" pasa a "próxima sesión".
-* Sustituir el bloque de la primera sesión por tres citas reales de participantes.
+Poner la fecha en la pregunta "¿Cuándo es la próxima sesión?" de `index.html`, también en el schema FAQPage.

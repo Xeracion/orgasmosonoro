@@ -80,10 +80,10 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "¿Cuándo es la primera sesión?",
+            "name": "¿Cuándo es la próxima sesión?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Un sábado antes de que acabe el año, de 20 a 23 h. La fecha exacta se anuncia primero a la lista. Apúntate y serás de los primeros en saberlo."
+              "text": "Un sábado, de 20 a 23 h. Las fechas se anuncian primero a la lista. Apúntate y serás de los primeros en saberlo."
             }
           },
           {
@@ -222,8 +222,8 @@
           <svg class="hero__star" aria-hidden="true"><use href="#estrella"/></svg>
           <h1 id="hero-titulo" class="hero__title">Hay un sitio entre A&nbsp;Coruña y Ferrol donde la cabeza <em>se apaga sola.</em></h1>
           <p class="hero__lead">Un sábado por la noche, un grupo de diez a quince personas y una casa de piedra preciosa junto a las Fragas do Eume. Cacao, respiración guiada y música para moverte como quieras. Sin experiencia, sin saber bailar, sin que nadie te mire. Solo hace falta estar harto de no parar.</p>
-          <a class="btn btn--light" href="#lista">Quiero plaza en la primera sesión</a>
-          <p class="hero__note">Primera sesión: un sábado antes de que acabe el año. La fecha exacta la sabe primero la gente de la lista.</p>
+          <a class="btn btn--light" href="#lista">Quiero una plaza</a>
+          <p class="hero__note">Las fechas las sabe primero la gente de la lista.</p>
         </div>
       </div>
     </section>
@@ -350,7 +350,6 @@
             <div class="stats__item"><dt>Cuándo</dt><dd>Sábado, de 20 a 23&nbsp;h</dd></div>
             <div class="stats__item"><dt>Grupo</dt><dd>10 a 15 personas</dd></div>
             <div class="stats__item"><dt>Espacio</dt><dd>Casa de piedra equipada</dd></div>
-            <div class="stats__item"><dt>Contribución</dt><dd>19 €</dd></div>
             <div class="stats__item"><dt>Desde Ferrol · Desde A Coruña</dt><dd>30&nbsp;min · &lt;&nbsp;1&nbsp;h</dd></div>
           </dl>
         </div>
@@ -407,15 +406,6 @@
       </div>
     </section>
 
-    <!-- 9b. Primera sesión.
-         Tras la primera sesión, sustituir este bloque por tres citas de participantes
-         con nombre de pila y ciudad. -->
-    <section class="first reveal" aria-label="Primera sesión">
-      <div class="first__card">
-        <svg class="first__star" aria-hidden="true"><use href="#estrella"/></svg>
-        <p>Todavía no ha habido ninguna sesión. La primera será un sábado antes de que acabe el año. Las diez o quince personas que vengan la estrenan con nosotros, y nosotros la estrenamos con ellas. Si te apetece ser de los primeros, <a href="#lista">apúntate a la lista</a>.</p>
-      </div>
-    </section>
 
     <!-- 10. Precio -->
     <section class="section reveal" id="precio" aria-labelledby="precio-titulo">
@@ -458,12 +448,12 @@
             <input class="waitlist__input" type="email" id="email" name="email" placeholder="tu@correo.com" autocomplete="email" maxlength="254" required>
             <!-- Campo trampa contra bots: las personas no lo ven -->
             <input class="waitlist__trap" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <button class="btn btn--light" type="submit">Quiero plaza en la primera sesión</button>
+            <button class="btn btn--light" type="submit">Quiero una plaza</button>
           </form>
           <!-- Consentimiento (pertenece al formulario mediante el atributo form) -->
           <label class="consent">
             <input class="consent__box" type="checkbox" name="consentimiento" value="si" form="waitlist-form" required>
-            <span>He leído y acepto la <a href="privacidad.html">política de privacidad</a>. Tengo al menos 14 años.</span>
+            <span>He leído y acepto la <a href="privacidad.html">política de privacidad</a>.</span>
           </label>
           <p class="waitlist__status" id="waitlist-status" role="status" aria-live="polite"></p>
           <p class="small">Sin spam. Puedes salir cuando quieras.</p>
@@ -477,8 +467,8 @@
         <h2 id="faq-titulo" class="title">Preguntas <em>frecuentes</em></h2>
         <div class="faq">
           <div class="faq__item">
-            <h3><button class="faq__toggle" type="button" aria-expanded="true" aria-controls="faq-1"><span class="faq__num">I.</span><span class="faq__q">¿Cuándo es la primera sesión?</span><span class="faq__mark" aria-hidden="true"></span></button></h3>
-            <div class="faq__answer" id="faq-1"><p>Un sábado antes de que acabe el año, de 20 a 23 h. La fecha exacta se anuncia primero a la lista. Apúntate y serás de los primeros en saberlo.</p></div>
+            <h3><button class="faq__toggle" type="button" aria-expanded="true" aria-controls="faq-1"><span class="faq__num">I.</span><span class="faq__q">¿Cuándo es la próxima sesión?</span><span class="faq__mark" aria-hidden="true"></span></button></h3>
+            <div class="faq__answer" id="faq-1"><p>Un sábado, de 20 a 23 h. Las fechas se anuncian primero a la lista. Apúntate y serás de los primeros en saberlo.</p></div>
           </div>
           <div class="faq__item">
             <h3><button class="faq__toggle" type="button" aria-expanded="true" aria-controls="faq-2"><span class="faq__num">II.</span><span class="faq__q">¿Dónde es exactamente?</span><span class="faq__mark" aria-hidden="true"></span></button></h3>
@@ -532,7 +522,7 @@
     <section class="section closing reveal" aria-label="Cierre">
       <div class="wrap">
         <p class="closing__text">Esa versión de ti que lleva meses corriendo no va a parar sola. Necesita que alguien le dé permiso. <em>Considéralo dado.</em></p>
-        <a class="btn btn--primary" href="#lista">Quiero plaza en la primera sesión</a>
+        <a class="btn btn--primary" href="#lista">Quiero una plaza</a>
       </div>
     </section>
   </main>
