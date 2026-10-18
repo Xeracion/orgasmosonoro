@@ -12,6 +12,8 @@ HTML, CSS y JS estáticos, sin dependencias ni paso de compilación. Se abre dir
 | `styles.css` | Estilos mobile-first con custom properties |
 | `main.js` | Aparición de secciones, acordeón de preguntas, menú y envío del formulario |
 | `privacidad.html` | Política de privacidad (responsable: Asociación Xeración) |
+| `aviso-legal.html` | Aviso legal (LSSI) |
+| `fran-sequeiro.jpg` | Retrato de Fran para la sección Quién lo guía |
 | `og-image.jpg` | Imagen para compartir en redes (1200 × 630) |
 | `logo-xeracion.png` | Logo de Xeración para el pie |
 | `vercel.json` | Redirección 301 del dominio mal escrito al correcto |
