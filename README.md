@@ -1,6 +1,6 @@
-# Orgamo Sonoro
+# Orgasmo Sonoro
 
-Landing de una sola página para los encuentros de música, respiración y cacao junto a las Fragas do Eume.
+Landing de una sola página para las sesiones de música, respiración y cacao junto a las Fragas do Eume.
 
 HTML, CSS y JS estáticos, sin dependencias ni paso de compilación. Se abre directamente con `index.html` o se despliega tal cual en Vercel, Netlify o GitHub Pages.
 
@@ -14,6 +14,7 @@ HTML, CSS y JS estáticos, sin dependencias ni paso de compilación. Se abre dir
 | `privacidad.html` | Política de privacidad (responsable: Asociación Xeración) |
 | `og-image.jpg` | Imagen para compartir en redes (1200 × 630) |
 | `logo-xeracion.png` | Logo de Xeración para el pie |
+| `vercel.json` | Redirección 301 del dominio mal escrito al correcto |
 | `google-apps-script/Code.gs` | Script que guarda los correos de la lista en Google Sheets |
 
 ## Conectar el formulario a Google Sheets
@@ -30,6 +31,11 @@ Si cambias el script, publica una nueva versión desde Implementar > Gestionar i
 
 ## Antes de publicar
 
-1. Sustituir el dominio provisional `orgamosonoro.com` (canonical, Open Graph y schema), y el correo e Instagram del schema.
+1. El dominio es `orgasmosonoro.com`. Revisar el correo e Instagram del schema (`contacto@orgasmosonoro.com`, `@orgasmosonoro`), que son provisionales.
+   `vercel.json` redirige con 301 `orgamosonoro.com` a `orgasmosonoro.com` si ese dominio se añade al proyecto de Vercel.
 2. El formulario ya está conectado. Borra de la hoja la fila de prueba `prueba-web@orgamosonoro.com`.
 3. Revisar la política de privacidad (`privacidad.html`) si cambia el uso de los datos o los proveedores.
+
+## Cuando haya fecha cerrada
+
+Poner la fecha en la pregunta "¿Cuándo es la próxima sesión?" de `index.html`, también en el schema FAQPage.

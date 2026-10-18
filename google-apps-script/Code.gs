@@ -1,5 +1,5 @@
 /**
- * Orgamo Sonoro: recibe los correos de la lista de espera y los guarda en Google Sheets.
+ * Orgasmo Sonoro: recibe los correos de la lista de espera y los guarda en Google Sheets.
  *
  * Instalación:
  * 1. Crea una hoja de cálculo nueva en Google Drive.
@@ -52,7 +52,7 @@ function doPost(e) {
 
 /** Permite comprobar en el navegador que la implementación responde. */
 function doGet() {
-  return responder({ ok: true, servicio: 'Orgamo Sonoro, lista de espera' });
+  return responder({ ok: true, servicio: 'Orgasmo Sonoro, lista de espera' });
 }
 
 /** Devuelve la hoja de la lista y la crea con cabeceras si no existe. */

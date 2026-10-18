@@ -1,10 +1,10 @@
 /* ==========================================================================
-   Orgamo Sonoro: interacciones mínimas
+   Orgasmo Sonoro: interacciones mínimas
    El scroll suave lo resuelve CSS (scroll-behavior). Aquí solo hay:
    1. Aparición suave de secciones al hacer scroll
    2. Acordeón de preguntas frecuentes
    3. Menú: despliegue en móvil y sección activa
-   4. Formulario de lista de espera (placeholder hasta conectar el ESP)
+   4. Formulario de lista de espera (envío a Google Sheets)
    ========================================================================== */
 (function () {
   'use strict';

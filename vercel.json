@@ -1,0 +1,16 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "orgamosonoro.com" }],
+      "destination": "https://orgasmosonoro.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.orgamosonoro.com" }],
+      "destination": "https://orgasmosonoro.com/:path*",
+      "permanent": true
+    }
+  ]
+}
