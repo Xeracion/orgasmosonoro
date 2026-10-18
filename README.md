@@ -1,4 +1,4 @@
-# Orgamo Sonoro
+# Orgasmo Sonoro
 
 Landing de una sola página para los encuentros de música, respiración y cacao junto a las Fragas do Eume.
 
@@ -14,6 +14,7 @@ HTML, CSS y JS estáticos, sin dependencias ni paso de compilación. Se abre dir
 | `privacidad.html` | Política de privacidad (responsable: Asociación Xeración) |
 | `og-image.jpg` | Imagen para compartir en redes (1200 × 630) |
 | `logo-xeracion.png` | Logo de Xeración para el pie |
+| `vercel.json` | Redirección 301 del dominio mal escrito al correcto |
 | `google-apps-script/Code.gs` | Script que guarda los correos de la lista en Google Sheets |
 
 ## Conectar el formulario a Google Sheets
@@ -30,6 +31,20 @@ Si cambias el script, publica una nueva versión desde Implementar > Gestionar i
 
 ## Antes de publicar
 
-1. Sustituir el dominio provisional `orgamosonoro.com` (canonical, Open Graph y schema), y el correo e Instagram del schema.
+1. El dominio es `orgasmosonoro.com`. Revisar el correo e Instagram del schema (`contacto@orgasmosonoro.com`, `@orgasmosonoro`), que son provisionales.
+   `vercel.json` redirige con 301 `orgamosonoro.com` a `orgasmosonoro.com` si ese dominio se añade al proyecto de Vercel.
 2. El formulario ya está conectado. Borra de la hoja la fila de prueba `prueba-web@orgamosonoro.com`.
 3. Revisar la política de privacidad (`privacidad.html`) si cambia el uso de los datos o los proveedores.
+
+## Cuando haya fecha cerrada
+
+Sustituir en una sola pasada en `index.html`:
+* Hero: "Primer encuentro: un sábado antes de que acabe el año." pasa a "Primer encuentro: sábado [día] de [mes]."
+* Bloque del primer encuentro: "El primero será un sábado antes de que acabe el año." pasa a "El primero es el sábado [día] de [mes]."
+* Pregunta "¿Cuándo es el primer encuentro?": poner la fecha, también en el schema FAQPage.
+
+## Después del primer encuentro
+
+* Botones: "Quiero plaza en el primer encuentro" pasa a "Quiero plaza en el próximo encuentro".
+* Hero y preguntas: "primer encuentro" pasa a "próximo encuentro".
+* Sustituir el bloque del primer encuentro por tres citas reales de participantes.
