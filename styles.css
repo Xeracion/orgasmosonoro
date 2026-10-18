@@ -685,49 +685,21 @@ p {
   top: 1.25rem;
 }
 
-/* --- 5b. Quién lo guía: hueco para el retrato -------------------------- */
+/* --- 5b. Quién lo guía: retrato -------------------------- */
 .portrait {
   margin: 0;
   max-width: 420px;
 }
 
-.portrait img,
-.portrait__placeholder {
+.portrait img {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: 24px;
 }
 
-/* Hasta que llegue la foto: lámina verde con el grabado */
-.portrait__placeholder {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  padding: 1.25rem 1.5rem;
-  overflow: hidden;
-  background-color: var(--moss-ink);
-  color: var(--cream);
-  isolation: isolate;
-}
-
-.portrait__placeholder::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-color: var(--cream);
-  opacity: 0.25;
-  -webkit-mask: var(--toile) 0 0 / 200px 200px repeat;
-  mask: var(--toile) 0 0 / 200px 200px repeat;
-}
-
-.portrait__placeholder span {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.5rem;
-}
 
 /* --- 9. Spoiler --------------------------------------------------------- */
 .spoiler {

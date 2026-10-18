@@ -12,6 +12,8 @@ HTML, CSS y JS estáticos, sin dependencias ni paso de compilación. Se abre dir
 | `styles.css` | Estilos mobile-first con custom properties |
 | `main.js` | Aparición de secciones, acordeón de preguntas, menú y envío del formulario |
 | `privacidad.html` | Política de privacidad (responsable: Asociación Xeración) |
+| `aviso-legal.html` | Aviso legal (LSSI) |
+| `fran-sequeiro.jpg` | Retrato de Fran para la sección Quién lo guía |
 | `og-image.jpg` | Imagen para compartir en redes (1200 × 630) |
 | `logo-xeracion.png` | Logo de Xeración para el pie |
 | `vercel.json` | Redirección 301 del dominio mal escrito al correcto |
@@ -34,7 +36,8 @@ Si cambias el script, publica una nueva versión desde Implementar > Gestionar i
 1. El dominio es `orgasmosonoro.com`. Revisar el correo e Instagram del schema (`contacto@orgasmosonoro.com`, `@orgasmosonoro`), que son provisionales.
    `vercel.json` redirige con 301 `orgamosonoro.com` a `orgasmosonoro.com` si ese dominio se añade al proyecto de Vercel.
 2. El formulario ya está conectado. Borra de la hoja la fila de prueba `prueba-web@orgamosonoro.com`.
-3. Revisar la política de privacidad (`privacidad.html`) si cambia el uso de los datos o los proveedores.
+3. Añadir en `aviso-legal.html` el número de inscripción de Xeración en el Registro de Asociaciones.
+4. Revisar la política de privacidad (`privacidad.html`) si cambia el uso de los datos o los proveedores.
 
 ## Cuando haya fecha cerrada
 
