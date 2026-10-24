@@ -30,6 +30,8 @@ HTML, CSS y JS estáticos, sin dependencias ni paso de compilación. Se abre dir
 
 Cada envío añade una fila con fecha, correo, origen (`utm_source` o la web de procedencia) y campaña (`utm_campaign`) en la pestaña "Lista de espera". Los correos repetidos no se duplican y un campo oculto filtra bots.
 
+Cada inscripción nueva envía además un aviso por correo a la dirección de `AVISO_A`, al principio de `Code.gs` (ahora `info@xeracion.org`). Al responder a ese aviso, la respuesta va directa a la persona inscrita.
+
 Si cambias el script, publica una nueva versión desde Implementar > Gestionar implementaciones para conservar la misma URL.
 
 ## Antes de publicar

@@ -11,10 +11,17 @@
  *
  * Si cambias este código, ve a Implementar > Gestionar implementaciones,
  * edita la implementación y elige "Nueva versión" para que se aplique sin cambiar la URL.
+ *
+ * Aviso por correo: cada inscripción nueva envía un email a AVISO_A con sus datos.
+ * La primera vez que lo publiques, Google pedirá permiso para enviar correo en tu nombre.
  */
 
 const NOMBRE_HOJA = 'Lista de espera';
 const CABECERAS = ['Fecha', 'Email', 'Origen', 'Campaña'];
+
+// Dirección que recibe el aviso de cada inscripción nueva (varias, separadas por comas).
+// Déjala vacía ('') para desactivar los avisos.
+const AVISO_A = 'info@xeracion.org';
 
 /** Recibe cada envío del formulario. */
 function doPost(e) {
@@ -41,13 +48,58 @@ function doPost(e) {
       if (existentes.indexOf(email) !== -1) return responder({ ok: true, repetido: true });
     }
 
-    hoja.appendRow([new Date(), limpiar(email), limpiar(p.origen), limpiar(p.campana)]);
+    const fecha = new Date();
+    hoja.appendRow([fecha, limpiar(email), limpiar(p.origen), limpiar(p.campana)]);
+    avisarPorCorreo(email, p, fecha, hoja.getLastRow() - 1);
     return responder({ ok: true });
   } catch (error) {
     return responder({ ok: false, error: 'servidor' });
   } finally {
     lock.releaseLock();
   }
+}
+
+/**
+ * Envía un email con los datos de la inscripción. Si falla, la inscripción
+ * ya está guardada en la hoja y la persona recibe igualmente el "ok".
+ */
+function avisarPorCorreo(email, p, fecha, total) {
+  if (!AVISO_A) return;
+  try {
+    const cuando = Utilities.formatDate(fecha, 'Europe/Madrid', 'dd/MM/yyyy HH:mm');
+    const datos = [
+      ['Correo', email],
+      ['Fecha', cuando],
+      ['Origen', String(p.origen || 'directo').slice(0, 300)],
+      ['Campaña', String(p.campana || '-').slice(0, 300)],
+      ['Total en la lista', String(total)],
+    ];
+    const texto = datos.map(function (d) { return d[0] + ': ' + d[1]; }).join('\n') +
+      '\n\nHoja: ' + SpreadsheetApp.getActiveSpreadsheet().getUrl();
+    const html = '<p>Nueva inscripción en la lista de espera de Orgasmo Sonoro.</p><table cellpadding="6">' +
+      datos.map(function (d) {
+        return '<tr><td><strong>' + d[0] + '</strong></td><td>' + escaparHtml(d[1]) + '</td></tr>';
+      }).join('') +
+      '</table><p><a href="' + SpreadsheetApp.getActiveSpreadsheet().getUrl() + '">Abrir la hoja</a></p>';
+
+    MailApp.sendEmail({
+      to: AVISO_A,
+      replyTo: email,
+      subject: 'Nueva inscripción en Orgasmo Sonoro: ' + email,
+      body: texto,
+      htmlBody: html,
+      name: 'Orgasmo Sonoro',
+    });
+  } catch (error) {
+    console.error('No se pudo enviar el aviso: ' + error);
+  }
+}
+
+/** Evita que los datos recibidos se interpreten como HTML en el correo. */
+function escaparHtml(texto) {
+  return String(texto).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  });
 }
 
 /** Permite comprobar en el navegador que la implementación responde. */
