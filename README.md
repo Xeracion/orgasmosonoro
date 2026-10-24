@@ -13,6 +13,7 @@ HTML, CSS y JS estáticos, sin dependencias ni paso de compilación. Se abre dir
 | `main.js` | Aparición de secciones, acordeón de preguntas, menú y envío del formulario |
 | `privacidad.html` | Política de privacidad (responsable: Asociación Xeración) |
 | `aviso-legal.html` | Aviso legal (LSSI) |
+| `404.html` | Página de error para direcciones que no existen (Vercel la sirve sola) |
 | `fran-sequeiro.jpg` | Retrato de Fran para la sección Quién lo guía |
 | `og-image.jpg` | Imagen para compartir en redes (1200 × 630) |
 | `logo-xeracion.png` | Logo de Xeración para el pie |

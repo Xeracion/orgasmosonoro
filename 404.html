@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- Metadatos básicos -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página no encontrada, Orgasmo Sonoro</title>
+    <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0a0f0a">
+
+  <!-- Favicon en SVG embebido -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0f0a'/%3E%3Cpath d='M18 46C18 28 30 16 48 16c0 18-12 30-30 30z' fill='%238bb896'/%3E%3Cpath d='M18 46L40 24' stroke='%23f0ede6' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Estrella reutilizable (decorativa) -->
+  <svg width="0" height="0" class="visually-hidden" aria-hidden="true" focusable="false">
+    <symbol id="estrella" viewBox="0 0 24 24"><path d="M12 0 Q13.6 10.4 24 12 Q13.6 13.6 12 24 Q10.4 13.6 0 12 Q10.4 10.4 12 0 Z"/></symbol>
+  </svg>
+
+  <!-- Navegación simple de vuelta a la portada -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Principal">
+      <a class="nav__logo" href="/">
+        <svg class="nav__mark" aria-hidden="true"><use href="#estrella"/></svg>
+        Orgasmo Sonoro
+      </a>
+      <a class="btn btn--ghost nav__back" href="/">Volver a la web</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <!-- Página 404: misma lámina verde con grabado que el hero de la portada -->
+    <section class="hero hero--404" aria-labelledby="error-titulo">
+      <div class="hero__frame">
+        <svg class="hero__moon hero__moon--l" aria-hidden="true" viewBox="0 0 40 40"><path d="M20 2 A18 18 0 1 0 20 38 A13 13 0 1 1 20 2 Z"/></svg>
+        <svg class="hero__moon hero__moon--r" aria-hidden="true" viewBox="0 0 40 40"><path d="M20 2 A18 18 0 1 1 20 38 A13 13 0 1 0 20 2 Z"/></svg>
+
+        <div class="hero__arch">
+          <p class="error__code" aria-hidden="true">404</p>
+          <h1 id="error-titulo" class="hero__title">Esta página se ha ido <em>a bailar.</em></h1>
+          <p class="hero__lead">La dirección no existe o ha cambiado de sitio. No pasa nada: todo lo que buscas sigue en la portada.</p>
+          <div class="error__actions">
+            <a class="btn btn--light" href="/">Volver a la web</a>
+            <a class="btn btn--ghost-light" href="/#lista">Quiero una plaza</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie con banda de toile -->
+  <footer class="site-footer">
+    <div class="site-footer__toile" aria-hidden="true"></div>
+    <a class="site-footer__org" href="https://xeracion.org" rel="noopener">
+      <span>Una iniciativa de</span>
+      <img src="/logo-xeracion.png" width="180" height="38" alt="Xeración">
+    </a>
+    <p>© 2026 Orgasmo Sonoro · <a href="/aviso-legal.html">Aviso legal</a> · <a href="/privacidad.html">Política de privacidad</a></p>
+  </footer>
+</body>
+</html>
